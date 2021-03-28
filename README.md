@@ -12,5 +12,6 @@ pygame
 ## USAGE
 python3 main.py
 
+## Images
 ![Image of GUI (unsorted)](/unsorted.JPG)
 ![Image of GUI (sorted)](/sorted.JPG)
