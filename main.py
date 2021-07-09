@@ -20,19 +20,19 @@ BUTTON_LOCATIONS = {
     'heapsort': []
 }
 
-FRAMERATE = 200 # not really a framerate but more of a tickrate used for waiting times when doing an animated swap
+FRAMERATE = 200  # not really a framerate but more of a tickrate used for waiting times when doing an animated swap
 
-WIDTH = 1000 # width in pixels 100 10px wide rectangles
-HEIGHT = 700 # 500px for rectangles and 200px for buttons
+WIDTH = 1000  # width in pixels 100 10px wide rectangles
+HEIGHT = 700  # 500px for rectangles and 200px for buttons
 
-BUTTON_COLOR = (7, 47, 95) #dark blue
-BUTTON_COLOR_HOVER = (18, 97, 160) #slightly lighter blue
+BUTTON_COLOR = (7, 47, 95)  # dark blue
+BUTTON_COLOR_HOVER = (18, 97, 160)  # slightly lighter blue
 
-RECT_HEIGHTS = [] #contains heights of rectangles to be sorted
+RECT_HEIGHTS = []  # contains heights of rectangles to be sorted
 for i in range(1, 101, 1):
     RECT_HEIGHTS.append(i*5)
 
-# set up pygame and the font I used
+# set up pygame and the font
 pygame.init()
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Sorting Algorithm Visualization')
@@ -52,7 +52,7 @@ def shuffle():
         index1 = random.randint(0, 99)
         index2 = random.randint(0, 99)
 
-        #swap
+        # swap
         temp = RECT_HEIGHTS[index1]
         RECT_HEIGHTS[index1] = RECT_HEIGHTS[index2]
         RECT_HEIGHTS[index2] = temp
@@ -67,7 +67,7 @@ def draw_rects():
         x = 10*i
         y = 500 - height
 
-        pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x, y, width, height))
+        pygame.draw.rect(SCREEN, (0, 0, 0), pygame.Rect(x, y, width, height))
 
 
 # method to highlight rectangle at index index
@@ -78,7 +78,7 @@ def highlight(index):
     x = 10*index
     y = 500 - height
 
-    pygame.draw.rect(SCREEN, (0,255,0), pygame.Rect(x, y, width, height))
+    pygame.draw.rect(SCREEN, (0, 255, 0), pygame.Rect(x, y, width, height))
     pygame.display.update()
 
 
@@ -90,7 +90,7 @@ def unhighlight(index):
     x = 10*index
     y = 500 - height
 
-    pygame.draw.rect(SCREEN, (0,0,0), pygame.Rect(x, y, width, height))
+    pygame.draw.rect(SCREEN, (0, 0, 0), pygame.Rect(x, y, width, height))
     pygame.display.update()
 
 
@@ -101,89 +101,89 @@ def draw_menu():
     padding = 5
     current_x = padding
 
-    #shuffle button
+    # shuffle button
     size = FONT.size(' Shuffle ')
     BUTTON_LOCATIONS['shuffle'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        shuffle_txt = FONT.render(' Shuffle ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        shuffle_txt = FONT.render(' Shuffle ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        shuffle_txt = FONT.render(' Shuffle ', True, (255,255,255), BUTTON_COLOR)
+        shuffle_txt = FONT.render(' Shuffle ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(shuffle_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end shuffle button
+    # end shuffle button
 
-    #bubblesort button
+    # bubblesort button
     size = FONT.size(' Bubble Sort ')
     BUTTON_LOCATIONS['bubblesort'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        bubblesort_txt = FONT.render(' Bubble Sort ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        bubblesort_txt = FONT.render(' Bubble Sort ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        bubblesort_txt = FONT.render(' Bubble Sort ', True, (255,255,255), BUTTON_COLOR)
+        bubblesort_txt = FONT.render(' Bubble Sort ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(bubblesort_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end bubblesort button
+    # end bubblesort button
 
-    #insertionsort button
+    # insertionsort button
     size = FONT.size(' Insertion Sort ')
     BUTTON_LOCATIONS['insertionsort'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        insertionsort_txt = FONT.render(' Insertion Sort ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        insertionsort_txt = FONT.render(' Insertion Sort ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        insertionsort_txt = FONT.render(' Insertion Sort ', True, (255,255,255), BUTTON_COLOR)
+        insertionsort_txt = FONT.render(' Insertion Sort ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(insertionsort_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end insertionsort button
+    # end insertionsort button
 
-    #selectionsort button
+    # selectionsort button
     size = FONT.size(' Selection Sort ')
     BUTTON_LOCATIONS['selectionsort'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        selectionsort_txt = FONT.render(' Selection Sort ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        selectionsort_txt = FONT.render(' Selection Sort ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        selectionsort_txt = FONT.render(' Selection Sort ', True, (255,255,255), BUTTON_COLOR)
+        selectionsort_txt = FONT.render(' Selection Sort ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(selectionsort_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end selectionsort button
+    # end selectionsort button
 
-    #quicksort button
+    # quicksort button
     size = FONT.size(' Quick Sort ')
     BUTTON_LOCATIONS['quicksort'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        quicksort_txt = FONT.render(' Quick Sort ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        quicksort_txt = FONT.render(' Quick Sort ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        quicksort_txt = FONT.render(' Quick Sort ', True, (255,255,255), BUTTON_COLOR)
+        quicksort_txt = FONT.render(' Quick Sort ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(quicksort_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end quicksort button
+    # end quicksort button
 
-    #mergesort button
+    # mergesort button
     size = FONT.size(' Merge Sort ')
     BUTTON_LOCATIONS['mergesort'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        mergesort_txt = FONT.render(' Merge Sort ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        mergesort_txt = FONT.render(' Merge Sort ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        mergesort_txt = FONT.render(' Merge Sort ', True, (255,255,255), BUTTON_COLOR)
+        mergesort_txt = FONT.render(' Merge Sort ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(mergesort_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end mergesort button
+    # end mergesort button
 
-    #heapsort button
+    # heapsort button
     size = FONT.size(' Heap Sort ')
     BUTTON_LOCATIONS['heapsort'] = [current_x, 582, size[0], size[1]]
     if current_x < mouse[0] < current_x + size[0] and 582 < mouse[1] < 582+size[1]:
-        heapsort_txt = FONT.render(' Heap Sort ', True, (255,255,255), BUTTON_COLOR_HOVER)
+        heapsort_txt = FONT.render(' Heap Sort ', True, (255, 255, 255), BUTTON_COLOR_HOVER)
     else:
-        heapsort_txt = FONT.render(' Heap Sort ', True, (255,255,255), BUTTON_COLOR)
+        heapsort_txt = FONT.render(' Heap Sort ', True, (255, 255, 255), BUTTON_COLOR)
 
     SCREEN.blit(heapsort_txt, [current_x, 582])
     current_x += size[0] + padding
-    #end heapsort button
+    # end heapsort button
 
 
 # method to check if px coord pos is in a 'button'
@@ -215,7 +215,7 @@ def handle_click(pos):
 
 # method to draw everything to the screen, uses drawing helper methods
 def draw():
-    SCREEN.fill((255,255,255))
+    SCREEN.fill((255, 255, 255))
     draw_rects()
     draw_menu()
     pygame.display.flip()
@@ -269,10 +269,10 @@ def insertionsort():
         j = i-1
         highlight(j)
 
-        while j>=0 and key < RECT_HEIGHTS[j]:
+        while j >= 0 and key < RECT_HEIGHTS[j]:
             draw()
             move_with_animation(j+1, RECT_HEIGHTS[j])
-            j-=1
+            j -= 1
             highlight(j)
 
         move_with_animation(j+1, key)
@@ -299,7 +299,7 @@ def partition(low, high):
 
     for j in range(low, high):
         if RECT_HEIGHTS[j] <= pivot:
-            i +=1
+            i += 1
             swap_with_animation(i, j)
 
     swap_with_animation(i+1, high)
@@ -336,21 +336,21 @@ def merge(l, m, r):
     while i < n1 and j < n2:
         if L[i] <= R[j]:
             move_with_animation(k, L[i])
-            i+=1
+            i += 1
         else:
             move_with_animation(k, R[j])
-            j+=1
-        k+=1
+            j += 1
+        k += 1
 
     while i < n1:
         move_with_animation(k, L[i])
-        i+=1
-        k+=1
+        i += 1
+        k += 1
 
     while j < n2:
         move_with_animation(k, R[j])
-        j+=1
-        k+=1
+        j += 1
+        k += 1
 
 
 # mergesort method
@@ -393,7 +393,7 @@ def heapsort():
         heapify(i, 0)
 
 
-shuffle() # initially shuffles RECT_HEIGHTS so it does not start sorted
+shuffle()  # initially shuffles RECT_HEIGHTS so it does not start sorted
 running = True
 while running:
     for event in pygame.event.get():
